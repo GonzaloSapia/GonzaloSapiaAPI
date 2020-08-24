@@ -3,7 +3,7 @@ import sys
 import json
 from pylab import *
 from argparse import ArgumentParser
-
+import argparse
 
 
 r = requests.get('https://api.blockchain.info/stats')
@@ -65,6 +65,16 @@ def calc_gan_con_porc(market_price, date):
 
 p = ArgumentParser (description= 'Elegi la cuenta que queres realizar')
 
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                    help='an integer for the accumulator')
+parser.add_argument('--sum', dest='accumulate', action='store_const',
+                    const=sum, default=max,
+                    help='sum the integers (default: find the max)')
+
+args = parser.parse_args()
+
+print(args.accumulate(args.integers))
 
 
 
